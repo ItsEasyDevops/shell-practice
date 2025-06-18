@@ -1,5 +1,5 @@
-PERSON1=Trump  # there should be a space after the equal sign
-PERSON2=Musk
+PERSON1=$1  # there should be a space after the equal sign
+PERSON2=$2
 
 echo "$PERSON1:: Heyy $PERSON2, How are you?"
 echo "$PERSON2:: I am fine, Mr. President. How are you?"
