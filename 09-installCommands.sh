@@ -1,11 +1,11 @@
 #!/bin/bash
 
-USER=$(id u)
+USERID=$(id u)
 
-if [ $USER -ne 0 ]
+if [ $USERID -ne 0 ]
 then
-echo "Error! Please run this script using root access"
-exit 1 #Giving status anything other than 0 upto 127
+    echo "Error! Please run this script using root access"
+    exit 1 #Giving status anything other than 0 upto 127
 else
-echo "You're running with root access."
+    echo "You're running with root access."
 fi
