@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Using echo keyword to print in the console.
 echo "Trump:: Heyy Musk, How are you?"
 echo "Musk:: I am fine, Mr. President. How are you?"
 echo "Trump:: I am fine too. Thanks for asking."
