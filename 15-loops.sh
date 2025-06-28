@@ -9,6 +9,7 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
+Y="\e[33m"
 
 LOGS_FOLDER="var/log/shellscript_logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
