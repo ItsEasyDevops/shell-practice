@@ -8,7 +8,7 @@ done
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
-N="\e[33m"
+N="\e[0m"
 
 LOGS_FOLDER="var/log/shellscript_logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
@@ -46,6 +46,6 @@ do
      dnf install $package -y  | tee -a $LOG_FILE
      VALIDATE $? "$package"
   else
-     echo -e "Nothing to do ... ${Y}${package} is already installed ${N}" | tee -a $LOG_FILE
+     echo -e "Nothing to do ... $Y $package is already installed $N" | tee -a $LOG_FILE
   fi
 done
