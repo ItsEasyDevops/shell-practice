@@ -6,10 +6,11 @@ add_numbers() {
    local num2=$2
 
 #Perform Addition
-   local sum=$(($num1+$:num2))
+   local sum=$(($num1+$num2))
 
 #Output the result
    echo "The sum of $num1 and $num2 is: $sum"
 }
 
-
+#call the function with arguments
+add_numbers $1 $2
