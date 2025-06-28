@@ -25,7 +25,6 @@ then
    exit 1
 else
    echo -e "$G You're running with root access. $N" | tee -a $LOGFILE
-   exit 0
 fi
 
 
