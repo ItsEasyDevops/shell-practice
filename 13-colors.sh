@@ -12,12 +12,12 @@ then
    echo -e "$R ERROR:: Please run this script with root access $N"
    exit 1
 else
-   echo -e "$You are running with root access"
+   echo -e "You are running with root access"
 fi
 
-dnf install MySQL -y
+dnf install mysql-server -y
 
-if [$? -eq 0 ]
+if [ $? -eq 0 ]
 then
    echo "Installing MySQL is ... $G SUCCESS $N"
 else
