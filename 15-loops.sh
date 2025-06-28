@@ -14,7 +14,7 @@ LOGS_FOLDER="var/log/shellscript_logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
-PACKAGES=("mysql" "nginx" "python")
+PACKAGES=("mysql" "nginx" "python3")
 
 mkdir -p $LOGS_FOLDER
 echo "Script started at $(date)" | tee -a $LOG_FILE
