@@ -10,24 +10,24 @@ SCRIPT_NAME= $(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "Script started at $(date)" &>> $LOG_FILE
+echo "Script started at $(date)" | tee -a $LOG_FILE
 
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]
 then
-   echo -e "$R ERROR:: Please run this script with root access $N" &>> $LOG_FILE
+   echo -e "$R ERROR:: Please run this script with root access $N" | tee -a $LOG_FILE
    exit 1
 else
-   echo -e "You are running with root access" &>> $LOG_FILE
+   echo -e "You are running with root access" | tee -a $LOG_FILE
 fi
 
 dnf install mysql-server -y &>> $LOG_FILE
 
 if [ $? -eq 0 ]
 then
-   echo -e "Installing MySQL is ... $G SUCCESS $N" &>> $LOG_FILE
+   echo -e "Installing MySQL is ... $G SUCCESS $N" | tee -a $LOG_FILE
 else
-   echo -e "Installing MySQL is ... $R FAILURE $N" &>> $LOG_FILE
+   echo -e "Installing MySQL is ... $R FAILURE $N" | tee -a $LOG_FILE
    exit 1
 fi
