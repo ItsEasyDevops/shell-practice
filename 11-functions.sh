@@ -12,6 +12,4 @@ add_numbers() {
    echo "The sum of $num1 and $num2 is: $sum"
 }
 
-#call the function with arguments
-add_numbers 5 7
 
