@@ -59,4 +59,15 @@ then
     USAGE
 fi
 
+if [ ! -d "$SOURCE_DIR" ]
+then
+    echo -e "$R ERROR: Source directory $SOURCE_DIR does not exist $N" | tee -a $LOG_FILE
+    exit 1
+fi
+
+if [ ! -d "$DEST_DIR" ]
+then
+    echo -e "$Y Destination directory $DEST_DIR does not exist, creating it now... $N" | tee -a $LOG_FILE
+fi
+
 
