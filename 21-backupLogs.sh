@@ -13,7 +13,7 @@ mkdir -p /dest-dir
 
 SOURCE_DIR=$1
 DEST_DIR=$2
-DAYS=${3:-14} #If days are provided then given days are considered if not then by default it will take 14 days
+DAYS=${3:+14} #If days are provided then given days are considered if not then by default it will take 14 days
 
 LOGS_FOLDER="/var/log/shellscript-log"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
