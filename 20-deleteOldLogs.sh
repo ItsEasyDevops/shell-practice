@@ -30,7 +30,7 @@ then
     echo -e "$R ERROR: Please run this script with root access $N" | tee -a $LOG_FILE
     exit 1
 else
-    echo "You are running with root access" | tee -a $LOG_FILE
+    echo -e "$G You are running with root access $N" | tee -a $LOG_FILE
 fi
 
 VALIDATE(){
