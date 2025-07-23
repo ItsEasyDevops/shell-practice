@@ -74,7 +74,9 @@ fi
 
 sudo install zip -y &>>$LOG_FILE
 
-FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime $DAYS)
+FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +$DAYS)
+echo "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR"
+echo "FILES: $FILES"
 
 if [ ! -z "$FILES" ]
 then
