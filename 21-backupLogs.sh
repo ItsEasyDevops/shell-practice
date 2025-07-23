@@ -1,13 +1,15 @@
 #!/bin/bash
 
-mkdir -p /app-logs
-touch -d "15 days ago" /app-logs/cart.log
-touch -d "15 days ago" /app-logs/user.log
-touch -d "15 days ago" /app-logs/nginx.conf
-touch -d "15 days ago" /app-logs/app.log
-touch -d "15 days ago" /app-logs/cart.sh
-touch -d "5 days ago" /app-logs/payment.log
-touch -d "5 days ago" /app-logs/catalogue.log
+mkdir -p /source-dir/
+touch -d "15 days ago" ../source-dir/cart.log
+touch -d "15 days ago" ../source-dir/user.log
+touch -d "15 days ago" ../source-dir/nginx.conf
+touch -d "15 days ago" ../source-dir/app.log
+touch -d "15 days ago" ../source-dir/cart.sh
+touch -d "5 days ago" ../source-dir/payment.log
+touch -d "5 days ago" ../source-dir/catalogue.log
+
+mkdir -p /dest-dir/
 
 SOURCE_DIR=$1
 DEST_DIR=$2
@@ -70,4 +72,15 @@ then
     echo -e "$Y Destination directory $DEST_DIR does not exist, creating it now... $N" | tee -a $LOG_FILE
 fi
 
+sudo install zip -y &>>$LOG_FILE
 
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime $DAYS)
+
+if [! -z "$FILES" ]
+then
+    echo -e "$G Found log files to backup: $FILES $N" | tee -a $LOG_FILE
+    ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
+    echo $FILES | zip -@ $ZIP_FILE &>>$LOG_FILE
+else
+    echo -e "$Y No log files found to backup in $SOURCE_DIR $N" | tee -a $LOG_FILE
+fi
