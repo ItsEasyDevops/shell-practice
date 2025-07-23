@@ -76,7 +76,7 @@ sudo install zip -y &>>$LOG_FILE
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime $DAYS)
 
-if [! -z "$FILES" ]
+if [ ! -z "$FILES" ]
 then
     echo -e "$G Found log files to backup: $FILES $N" | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
