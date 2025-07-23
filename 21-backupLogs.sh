@@ -72,7 +72,7 @@ then
     echo -e "$Y Destination directory $DEST_DIR does not exist, creating it now... $N" | tee -a $LOG_FILE
 fi
 
-sudo install zip -y &>>$LOG_FILE
+sudo yum install zip -y &>>$LOG_FILE
 
 FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +$DAYS)
 echo "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR"
