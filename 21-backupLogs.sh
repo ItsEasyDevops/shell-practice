@@ -1,15 +1,15 @@
 #!/bin/bash
 
-mkdir -p /source-dir/
-touch -d "15 days ago" ../source-dir/cart.log
-touch -d "15 days ago" ../source-dir/user.log
-touch -d "15 days ago" ../source-dir/nginx.conf
-touch -d "15 days ago" ../source-dir/app.log
-touch -d "15 days ago" ../source-dir/cart.sh
-touch -d "5 days ago" ../source-dir/payment.log
-touch -d "5 days ago" ../source-dir/catalogue.log
+mkdir -p /source-dir
+touch -d "15 days ago" /source-dir/cart.log
+touch -d "15 days ago" /source-dir/user.log
+touch -d "15 days ago" /source-dir/nginx.conf
+touch -d "15 days ago" /source-dir/app.log
+touch -d "15 days ago" /source-dir/cart.sh
+touch -d "5 days ago" /source-dir/payment.log
+touch -d "5 days ago" /source-dir/catalogue.log
 
-mkdir -p /dest-dir/
+mkdir -p /dest-dir
 
 SOURCE_DIR=$1
 DEST_DIR=$2
