@@ -82,7 +82,8 @@ if [ ! -z "$FILES" ]
 then
     echo -e "$G Found log files to backup: $FILES $N" | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
-    echo $FILES | zip -@ $ZIP_FILE &>>$LOG_FILE
+    # echo $FILES | zip -@ $ZIP_FILE &>>$LOG_FILE
+    zip "$ZIP_FILE" $FILES &>>$LOG_FILE
 else
     echo -e "$Y No log files found to backup in $SOURCE_DIR $N" | tee -a $LOG_FILE
 fi
