@@ -24,21 +24,6 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-check_root
-mkdir -p $LOGS_FOLDER
-
-
-USAGE(){
-     echo -e "$R USAGE: $N sh 20-backupLogs.sh <source-dir> <destination-dir> <days(optional)>"
-}
-
-
-if [ $# -lt 2 ]
-then
-    USAGE
-fi
-
-
 check_root(){
      if [ $USERID -ne 0 ]
      then
@@ -58,4 +43,20 @@ VALIDATE(){
          exit 1
     fi
 }
+
+
+check_root
+mkdir -p $LOGS_FOLDER
+
+
+USAGE(){
+     echo -e "$R USAGE: $N sh 20-backupLogs.sh <source-dir> <destination-dir> <days(optional)>"
+}
+
+
+if [ $# -lt 2 ]
+then
+    USAGE
+fi
+
 
