@@ -6,6 +6,8 @@ touch -d "15 days ago" /app-logs/user.log
 touch -d "15 days ago" /app-logs/nginx.conf
 touch -d "15 days ago" /app-logs/app.log
 touch -d "15 days ago" /app-logs/cart.sh
+touch -d "5 days ago" /app-logs/payment.log
+touch -d "5 days ago" /app-logs/catalogue.log
 
 
 
