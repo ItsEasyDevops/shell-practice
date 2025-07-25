@@ -80,13 +80,13 @@ VALIDATE $? "Zip Installation"
 
 # Find log files older than specified days
 FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +$DAYS)
-echo -e "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR\n"
-echo -e "FILES:\n$FILES"
+echo -e "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR" | tee -a $LOG_FILE
+echo -e "FILES:\n$FILES\n" | tee -a $LOG_FILE
 
 # Check if any files were found
 if [ ! -z "$FILES" ]
 then
-    echo -e "$G Found log files to backup:\n $N$FILES" | tee -a $LOG_FILE
+    echo -e "$G Found log files to backup:\n $N$FILES\n" | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
     echo "$FILES" | zip -@ "$ZIP_FILE" &>>$LOG_FILE
     VALIDATE $? "Backup Creation success"
