@@ -55,35 +55,55 @@ USAGE(){
      echo -e "$R USAGE: $N sh 20-backupLogs.sh <source-dir> <destination-dir> <days(optional)>"
 }
 
-
+# Check if the correct number of arguments is provided
 if [ $# -lt 2 ]
 then
     USAGE
 fi
 
+# Check if source directory exists
 if [ ! -d "$SOURCE_DIR" ]
 then
     echo -e "$R ERROR: Source directory $SOURCE_DIR does not exist $N" | tee -a $LOG_FILE
     exit 1
 fi
 
+# Check if destination directory exists, if not create it
 if [ ! -d "$DEST_DIR" ]
 then
     echo -e "$Y Destination directory $DEST_DIR does not exist, creating it now... $N" | tee -a $LOG_FILE
 fi
 
+# install zip if not already installed
 sudo yum install zip -y &>>$LOG_FILE
 
+# Find log files older than specified days
 FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +$DAYS)
 echo "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR"
 echo "FILES: $FILES"
 
+# Check if any files were found
 if [ ! -z "$FILES" ]
 then
     echo -e "$G Found log files to backup: $FILES $N" | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
     # echo $FILES | zip -@ $ZIP_FILE &>>$LOG_FILE
     zip "$ZIP_FILE" $FILES &>>$LOG_FILE
+
+    # Validate if the zip file was created successfully
+    if [-f $ZIP_FILE]
+    then
+        echo -e "$G Backup created successfully at $ZIP_FILE $N" | tee -a $LOG_FILE
+        while IFS= read -r filepath
+        do
+           echo "Deleting file: $filepath" | tee -a $LOG_FILE
+           rm -rf $filepath
+        done <<< $FILES
+        echo -e "$G Log files older than $DAYS days deleted successfully $N" | tee -a $LOG_FILE
+    else
+        echo -e "$R ERROR: Failed to create backup at $ZIP_FILE $N" | tee -a $LOG_FILE
+        exit 1
+    fi
 else
     echo -e "$Y No log files found to backup in $SOURCE_DIR $N" | tee -a $LOG_FILE
 fi
