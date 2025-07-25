@@ -79,13 +79,13 @@ sudo yum install zip -y &>>$LOG_FILE
 
 # Find log files older than specified days
 FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +$DAYS)
-echo "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR"
+echo "Debug: Finding *.log files older than $DAYS days in $SOURCE_DIR \n"
 echo "FILES: $FILES"
 
 # Check if any files were found
 if [ ! -z "$FILES" ]
 then
-    echo -e "$G Found log files to backup: $FILES $N" | tee -a $LOG_FILE
+    echo -e "$G Found log files to backup: $N $FILES \n" | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
     # echo $FILES | zip -@ $ZIP_FILE &>>$LOG_FILE
     zip "$ZIP_FILE" $FILES &>>$LOG_FILE
