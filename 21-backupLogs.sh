@@ -92,7 +92,7 @@ then
     VALIDATE $? "Backup Creation success"
 
     # Validate if the zip file was created successfully
-    if [-f $ZIP_FILE]
+    if [ -f $ZIP_FILE ]
     then
         echo -e "$G Backup created successfully at $ZIP_FILE $N" | tee -a $LOG_FILE
         while IFS= read -r filepath
