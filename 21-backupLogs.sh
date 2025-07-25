@@ -88,8 +88,8 @@ if [ ! -z "$FILES" ]
 then
     echo -e "$G Found log files to backup:\n $N$FILES" | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/backup-$(date +%Y%m%d).zip"
-    echo $FILES | zip -@ $ZIP_FILE &>>$LOG_FILE
-    # zip "$ZIP_FILE" $FILES &>>$LOG_FILE
+    echo "$FILES" | zip -@ "$ZIP_FILE" &>>$LOG_FILE
+    VALIDATE $? "Backup Creation success"
 
     # Validate if the zip file was created successfully
     if [-f $ZIP_FILE]
