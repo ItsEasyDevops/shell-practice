@@ -16,7 +16,7 @@ DEST_DIR=$2
 DAYS=${3:-14} #If days are provided then given days are considered if not then by default it will take 14 days
 
 LOGS_FOLDER="/var/log/shellscript-log"
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+SCRIPT_NAME=$(basename "$0")
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 USERID=$(id -u)
